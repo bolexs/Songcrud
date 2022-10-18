@@ -19,4 +19,4 @@ class Song(models.Model):
 
 class Lyrics(models.Model):
     content = models.CharField(max_length = 1000)
-    sond_id = models.ForeignKey(Song, on_delete = models.CASCADE)
+    song_id = models.ForeignKey(Song, on_delete = models.CASCADE)
