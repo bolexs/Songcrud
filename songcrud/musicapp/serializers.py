@@ -8,6 +8,7 @@ class LyricsSerializer(serializers.ModelSerializer):
 
 
 class SongSerializer(serializers.ModelSerializer):
+    #to get lyrics content in song
      lyrics = serializers.SerializerMethodField('get_lyrics')
      artist_id = serializers.StringRelatedField(read_only=True)
 
