@@ -1,9 +1,4 @@
-from email.policy import default
-from enum import auto
-from importlib.resources import contents
 from datetime import date, datetime
-from operator import mod
-from unittest.util import _MAX_LENGTH
 
 from django.db import models
 
@@ -28,7 +23,7 @@ class Song(models.Model):
 
 
 class Lyric(models.Model):
-    content = models.CharField(max_length = 1000)
+    content = models.TextField()
     song_id = models.ForeignKey(Song, on_delete = models.CASCADE)
 
     def __str__(self):
