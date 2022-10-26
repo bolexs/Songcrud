@@ -5,8 +5,13 @@ from .views import SongViewSet
 
 
 router = DefaultRouter()
-router.register(r'songs', SongViewSet, basename='songs')
+router.register('songs', SongViewSet, basename='songs')
 
 urlpatterns = [
-
-] + router.urls
+    path('songs', SongViewSet.as_view({
+        'get': 'list'
+    }), name='song-list'),
+    path('song/<int:pk>', SongViewSet.as_view ({
+         'get':'retrieve','patch':'update'
+    }), name='song-detail')
+] 

@@ -18,3 +18,14 @@ class SongViewSet(viewsets.ModelViewSet):
         id = self.kwargs.get('pk')
         song = get_object_or_404(Song, pk=id)
         return song
+
+    
+    def update(self, request, *args, **kwargs):
+        song = self.get_object()
+        serializer = UpdateSongSerializer(instance=song, data=request.data, partial=True)
+
+        serializer.is_valid(raise_exception=True)
+
+        song_instance = serializer.update(song, serializer.validated_data)
+        response_data = self.get_serializer(song_instance).data
+        return Response(response_data, status=status.HTTP_200_OK)
