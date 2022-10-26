@@ -12,6 +12,6 @@ urlpatterns = [
         'get': 'list'
     }), name='song-list'),
     path('song/<int:pk>', SongViewSet.as_view ({
-         'get':'retrieve','patch':'update'
+         'get':'retrieve','patch':'update', 'delete': 'destroy'
     }), name='song-detail')
 ] 

@@ -29,3 +29,10 @@ class SongViewSet(viewsets.ModelViewSet):
         song_instance = serializer.update(song, serializer.validated_data)
         response_data = self.get_serializer(song_instance).data
         return Response(response_data, status=status.HTTP_200_OK)
+
+    
+    def destroy(self, request, *args, **kwargs):
+        song = self.get_object()
+        song.delete()
+        deleted = f"{song} has been deleted"
+        return Response(deleted, status=status.HTTP_204_NO_CONTENT)
